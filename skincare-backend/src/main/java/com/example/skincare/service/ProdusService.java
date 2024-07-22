@@ -1,10 +1,12 @@
 package com.example.skincare.service;
 
+import com.example.skincare.model.Notificare;
 import com.example.skincare.model.Produs;
 import com.example.skincare.repository.ProdusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -12,6 +14,8 @@ public class ProdusService {
 
     @Autowired
     private ProdusRepository produsRepository;
+
+    @Autowired NotificareService notificareService;
 
     public Produs saveProdus(Produs produs) {
         return produsRepository.save(produs);
@@ -32,6 +36,5 @@ public class ProdusService {
     public List<Produs> getProduseByUtilizatorId(Long userId) {
         return produsRepository.findByUtilizatorId(userId);
     }
-
 
 }
